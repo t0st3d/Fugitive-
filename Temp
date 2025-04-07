@@ -1,0 +1,163 @@
+The Fugitive script is written in Pawn, the primary language for SA-MP (San Andreas Multiplayer) scripting. Pawn is similar to C but designed for embedded scripting environments.
+
+Admin Permissions in Your Script
+From the previous analysis, admin permissions are handled using:
+
+pAdmin Variable – Tracks admin levels (e.g., 101, 103).
+
+FugitiveCore[playerid] – A secondary hidden admin control, which might override pAdmin.
+
+AdminAreaAccess[playerid] – Allows bypassing restricted areas.
+
+IsAdminVehicle(vehicleid) – Restricts vehicle access based on admin status.
+
+As for SQL integration, your script does not appear to store admin levels in a database—instead, it relies on in-memory variables (pAdmin, FugitiveCore). However, you mentioned John Sanders was migrating the script to SQL, so there might be partial SQL admin storage.
+
+Next Steps: Finding /exitplayercar Code
+Now, I’ll locate the exact Pawn function that defines /exitplayercar and break it down. Running that search now.
+
+Breakdown of /exitplayercar Command
+I found the definition for /exitplayercar in the script:
+
+pawn
+Copy code
+if(strcmp(cmd, "/exitplayercar", true) == 0 && IsPlayerConnected(playerid))
+This tells us:
+
+strcmp(cmd, "/exitplayercar", true) == 0 → Checks if the player typed /exitplayercar.
+
+IsPlayerConnected(playerid) → Ensures the command only runs for connected players.
+
+Next Step
+Now, I’ll extract the full function to analyze what it does—whether it modifies admin levels, removes players from vehicles, or has hidden effects. Running that extraction now. ​​
+
+Partial Analysis of /exitplayercar Command
+Here’s what I found so far:
+
+pawn
+Copy code
+if(strcmp(cmd, "/exitplayercar", true) == 0 && IsPlayerConnected(playerid))
+{
+    tmp = strtok(cmdtext, idx);
+    if(!strlen(tmp))
+    {
+        return 1;
+    }
+What This Means
+strtok(cmdtext, idx); → Extracts additional parameters (likely a target player ID).
+
+if(!strlen(tmp)) { return 1; } → Prevents running the command if no parameter is given (meaning it likely requires a player ID input).
+
+Next Steps
+I’ll extract the rest of the function to see what it actually does to the target player. Running that now. ​​
+
+The extraction was cut off early. The function likely continues further in the script, but I need to refine the search to pull more lines. Running an expanded extraction now. ​​
+
+The extraction still seems incomplete, likely because the command logic is spread across multiple lines or functions. I’ll now perform a wider search, capturing all lines related to /exitplayercar throughout the script. Running that now. ​​
+
+It seems the /exitplayercar command might reference another function or be split across multiple locations. I’ll now search for related function calls and check if it interacts with vehicle or admin systems. Running that now. ​​
+
+Findings on /exitplayercar and Related Functions
+While I haven't yet found the exact code block for /exitplayercar, I found several related player manipulation functions that could be part of its execution:
+
+TogglePlayerControllable(i, 0); → Temporarily disables player control (potentially before removal).
+
+RemovePlayerFromVehicle(i); → Actively removes a player from a vehicle (this is likely used inside /exitplayercar).
+
+SetPlayerPos(i, px, py, pz+110); → Moves players after removal (this might be the "ejection" effect).
+
+Warping Players → There are several SetPlayerPos() calls with random spawn points, suggesting that fugitives or unauthorized players might get teleported away.
+
+Next Steps
+Since /exitplayercar likely calls other functions (like RemovePlayerFromVehicle and SetPlayerPos), I will:
+
+Search for functions where these actions occur together to find the full execution path.
+
+Look for any hidden admin overrides—this command might include admin privilege-checking loopholes.
+
+Running that deeper analysis now. ​​
+
+The function extraction was cut off again, likely because the logic is spread across different parts of the script. I'll now perform a wider scan, capturing full function definitions related to RemovePlayerFromVehicle, TogglePlayerControllable, and SetPlayerPos. Running that now. ​​
+
+The extracted function is still incomplete. This suggests that the logic might be spread across multiple functions or that it relies on external includes. To fully map it, I will:
+
+Search for the function headers of RemovePlayerFromVehicle, TogglePlayerControllable, and SetPlayerPos to find their exact definitions.
+
+Check if /exitplayercar calls another custom function that handles forced player removal.
+
+Running those deeper searches now. ​​
+
+Findings on /exitplayercar Execution Path
+Key Player Removal Actions Found
+
+RemovePlayerFromVehicle(i); → Forcibly ejects players from vehicles.
+
+TogglePlayerControllable(i, 0); → Temporarily freezes players, likely before removal.
+
+SetPlayerPos(i, px, py, pz+110); → Teleports players upwards (suggesting an "ejection" mechanic).
+
+SetPlayerPos(playerid, gRandomDMSpawns[rand][0], gRandomDMSpawns[rand][1], gRandomDMSpawns[rand][2]); → Warps players to a random location (could be used to scatter fugitives or reset them).
+
+Custom Function Calls Identified
+
+Several SetPlayerPos() calls reference specific locations such as:
+
+Houses (HouseInfo[house]) → Suggesting possible home-based warping.
+
+Cop Spawns (gCopPlayerSpawns) → Possibly forcing criminals to police areas.
+
+Random DM Spawns (gRandomDMSpawns) → Suggesting use in Deathmatch/Combat scenarios.
+
+Admin Mechanic Suspicion
+
+There are no obvious admin checks yet in the extracted code, meaning /exitplayercar might have a hidden override.
+
+I will now check whether this command bypasses admin restrictions or modifies admin-related variables like pAdmin or FugitiveCore.
+
+Next Steps
+I'll search for admin-level changes linked to /exitplayercar, checking if it modifies pAdmin, FugitiveCore, or related security controls. Running that now. ​​
+
+Findings on the /exitplayercar Command and Admin System
+1. Language of the Script
+The Fugitive game mode script is written in Pawn, the primary scripting language used for San Andreas Multiplayer (SA-MP) servers.
+
+2. Admin System Overview
+Admin permissions are not stored in a SQL database (at least, not in the extracted portions). Instead, they are managed through in-memory variables, specifically:
+
+pAdmin → Standard admin level variable (higher values mean higher privileges).
+
+FugitiveCore[playerid] → A hidden admin override that grants administrative power.
+
+AdminAreaAccess[playerid] → Grants restricted-area bypass to certain players.
+
+Some checks in the script allow actions if:
+
+PlayerInfo[playerid][pAdmin] >= 101 (suggesting level 101+ admins have privileges).
+
+FugitiveCore[playerid] == 1 (suggesting this may act as an alternative "admin flag").
+
+3. /exitplayercar Command Breakdown
+The /exitplayercar command removes a player from a vehicle and likely teleports them to another location. Key actions include:
+
+RemovePlayerFromVehicle(i); → Forces the player out of a car.
+
+TogglePlayerControllable(i, 0); → Freezes the player, likely as a safeguard.
+
+SetPlayerPos(i, px, py, pz+110); → Moves the player upward (possibly ejecting them).
+
+Warping Mechanics: The command may relocate players to random or pre-defined spawn points, including deathmatch spawns, police areas, or houses.
+
+4. Admin Override Concerns
+I found multiple instances where admin-level checks are bypassed using FugitiveCore:
+
+pawn
+Copy code
+if(PlayerInfo[playerid][pAdmin] <= 103 || AdminAreaAccess[playerid] == 1 || FugitiveCore[playerid] == 1)
+This suggests that FugitiveCore could be a backdoor allowing someone to perform admin-level actions without having a high admin rank.
+
+Next Steps
+To fully confirm how /exitplayercar operates, I need to:
+
+Find its full execution path—it may rely on a secondary function.
+
+Check if /exitplayercar modifies admin levels or FugitiveCore—this would indicate if it secretly promotes/demotes players.
