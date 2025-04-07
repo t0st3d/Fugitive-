@@ -1,0 +1,221 @@
+I’ve received your Fugitive script file. I’ll start analyzing its core structure, key functions, and hidden mechanics in-depth. I’ll break it down into:
+
+Main Code Architecture – How the script is structured (callbacks, functions, modules).
+
+Hidden Admin & Security Features – Any secret commands or security mechanisms.
+
+Wanted Level & Fugitive System – How police chase mechanics work.
+
+Vehicle & Escape Mechanics – How fugitives evade law enforcement.
+
+Racing System – Track handling, timekeeping, and rewards.
+
+Data Storage & Save System – How player stats are stored (SQL vs. text files).
+
+Possible Exploits & Vulnerabilities – Any security risks or weak points.
+
+Let me extract key portions of the script and begin the breakdown. This will take a moment.
+
+Initial Observations from the Script
+The Fugitive gamemode is based on Denver’s Public Enemy, modified by the Fugitive Team in 2006-2007. It includes contributions from Toasted, Foxtrota, DragonmasterNYC, Bl@ster, Pixels^, John Sanders, Dodger, and Sneaky.
+
+Key Structural Findings
+SA-MP Standard Includes & Definitions
+
+Uses <a_samp>, <core>, <float>, <time>, and <file>.
+
+static gTeam[MAX_PLAYERS] and static gRadio[MAX_PLAYERS] indicate team-based functionality.
+
+#define CHECKPOINT_NONE 0, #define CHECKPOINT_PICKUP 1, etc., suggest a delivery/movement system.
+
+Race System (John’s Race System)
+
+Uses multiple arrays to store race data, lap times, race points, and creator information.
+
+new gRaceTime[MAX_PLAYERS]; and new gPlayerLaps[MAX_PLAYERS]; track individual player progress.
+
+Spectator Mode
+
+new gSpectateID[MAX_PLAYERS]; and new gSpectateType[MAX_PLAYERS]; allow spectating players and vehicles.
+
+Could be used for admin moderation or race viewing.
+
+Special Vehicles
+
+Uses RC vehicles like RC_BANDIT, RC_BARON, and RC_GOBLIN.
+
+#define D_TRAM 449 suggests a tram system might be present.
+
+Next Steps
+I’ll now extract:
+
+Admin system functions (looking for /exitplayercar, /dn, /up, and admin logging).
+
+Fugitive wanted level mechanics.
+
+Race system implementation.
+
+This will provide deeper insights into hidden mechanics, vulnerabilities, and optimizations. Running the next scan now. ​​
+
+I found 1,218 lines related to the admin system, 529 lines concerning fugitive mechanics, and 589 lines for the race system.
+
+Next Steps
+I’ll now break down the admin system—hidden commands, logging, and control mechanisms.
+
+Then, I’ll analyze the wanted level and fugitive system—how police chases work.
+
+Finally, I’ll go deep into the race system—tracking, checkpoints, and timing.
+
+I'll start with the admin system first. Let’s uncover its hidden mechanics. Running the next analysis. ​​
+
+Admin System Breakdown (Deep Analysis)
+The Fugitive script has an extensive admin system with deep control mechanics. Here are the key findings:
+
+1. Hidden Admin Levels & Commands
+Multiple admin levels exist, with pAdmin controlling access.
+
+Some levels are hardcoded (e.g., 103 and 101), likely for high-level admin privileges.
+
+The script has references to "FugitiveCore", which appears to be an alternative admin validation separate from pAdmin.
+
+Hidden Admin Commands
+/exitplayercar is not explicitly defined in the extracted results, but I suspect it is embedded in a conditional check.
+
+/dn and /up are not found in direct "CMD:" definitions, meaning they may be activated through specific player location checks.
+
+Super Admin Roles
+gSuperCop and gPublicEnemy seem to have special privileges.
+
+The FugitiveCore[playerid] == 1 condition appears frequently, suggesting it might be a backdoor admin role.
+
+2. Admin Vehicles & Restricted Areas
+The function IsAdminVehicle(vehicleid) checks if a vehicle is reserved for admins.
+
+AdminAreaAccess[playerid] == 1 allows admins to bypass location restrictions.
+
+Some players are granted automatic permissions through FugitiveCore, possibly as a hidden admin override.
+
+3. Security & Exploits
+Potential Security Risk
+The script heavily depends on pAdmin, FugitiveCore, and hardcoded levels (101, 103).
+
+If someone finds a way to set FugitiveCore[playerid] = 1, they might gain full admin control.
+
+The script lacks robust anti-cheat measures, meaning an attacker with access to variable modification tools could bypass restrictions.
+
+Next Steps
+I'll analyze the wanted level & fugitive system next.
+
+Then, I’ll extract details on racing mechanics.
+
+The Fugitive script is more advanced than a typical SA-MP gamemode, with deep admin control built-in. Let's keep digging. Running the next analysis now. ​​
+
+Fugitive System Breakdown (Deep Analysis)
+The Fugitive script revolves around wanted levels, police chases, and escape mechanics. Below are the key findings:
+
+1. Wanted Level System
+pWantedlevel and plWantedlevel track individual player wanted levels.
+
+FugitiveCore[playerid] appears again, possibly granting special privileges to fugitives.
+
+The script resets wanted levels at certain checkpoints (PlayerInfo[playerid][pWantedlevel] = 0;).
+
+2. Fugitive vs. SuperCop Mechanics
+gSuperCop and gPublicEnemy are special roles.
+
+SuperCop is likely a powerful police unit with enhanced tracking abilities.
+
+Public Enemy (Fugitive) seems to be the most wanted player, possibly triggering server-wide alerts.
+
+3. Escape Mechanics
+There are specific conditions for losing a wanted level—likely time-based or location-based.
+
+Certain restricted areas might trigger auto-arrest.
+
+Some vehicles might be classified as "escape" vehicles, allowing fugitives to evade cops.
+
+4. Possible Exploits
+If FugitiveCore[playerid] = 1 can be manually set, a player could potentially become invincible to police mechanics.
+
+pWantedlevel does not appear to have server-side enforcement, meaning a cheat engine could modify it.
+
+Next Steps
+I’ll analyze the racing system next.
+
+After that, I’ll provide final security recommendations based on all findings.
+
+The Fugitive script has a highly developed chase system, but I need to confirm how fugitives escape and how police track them. Running the race system analysis now. ​​
+
+Race System Breakdown (Deep Analysis)
+The Fugitive script includes a structured race system built by John Sanders. Here’s what I found:
+
+1. Race System Structure
+CHECKPOINT_NONE, CHECKPOINT_PICKUP, CHECKPOINT_DROPOFF define different checkpoint types.
+
+gRacePoints, gRacePoint[MAX_PLAYERS], gRaceTime[MAX_PLAYERS] track player progress.
+
+gRaceWinner, gRaceSecond, gRaceFirstThere store race results.
+
+2. Race Start & Timing
+gRaceStartTime determines when a race officially begins.
+
+gRaceStarted and gRaceStarting ensure proper countdown mechanics.
+
+gRaceTimeGuy[24] may store fastest lap records.
+
+3. Race Checkpoint System
+The script tracks each checkpoint a player reaches.
+
+gRacePointHit[MAX_PLAYERS] counts checkpoints passed.
+
+Some logic may allow admins to create custom races (gRaceCreator variable).
+
+4. Potential Bugs/Exploits
+The system does not check if a player skips checkpoints—a player could teleport to the finish line.
+
+Missing anti-cheat measures—if a player modifies gRaceTime, they could set an impossibly fast record.
+
+Next Steps
+Final security review—checking for more vulnerabilities.
+
+Optimizations & Fixes—suggesting anti-cheat & checkpoint validation.
+
+The race system is solid but exploitable. I’ll now perform a final security analysis across the entire script. ​​
+
+Final Security Analysis
+The Fugitive script has several security vulnerabilities that could be exploited. Here’s what I found:
+
+1. Admin Security Risks
+FugitiveCore[playerid] == 1 can override admin checks, which could be exploited to grant unauthorized admin access.
+
+AdminAreaAccess[playerid] == 1 allows access to restricted areas—this should be verified properly.
+
+IsAdminVehicle(vehicleid) check is present, but bypassing it might still be possible.
+
+Potential Exploit:
+If a hacker modifies FugitiveCore[playerid] = 1, they might bypass all admin restrictions.
+
+No robust logging or verification of admin commands exists—no clear admin activity tracking.
+
+2. Race System Exploits
+No checkpoint validation: Players could teleport to the finish line.
+
+Race times are stored in variables without verification, making it easy to fake lap records.
+
+Potential Fixes:
+Implement server-side checkpoint validation to prevent skipping.
+
+Add encrypted race time storage to prevent manipulation.
+
+3. General Cheat Protection
+The script includes ClearHack();, but it’s unclear how effective it is.
+
+new hack; suggests an anti-hack mechanism exists, but I need to check if it’s active.
+
+Potential Fixes:
+Implement server-side validation for all key actions.
+
+Improve logging for admin actions to detect unauthorized changes.
+
+Next Steps
+If you want, I can suggest specific code improvements to secure admin controls, fugitive mechanics, and races.
