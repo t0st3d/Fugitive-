@@ -383,3 +383,135 @@ To fully confirm how /exitplayercar operates, I need to:
 Find its full execution path—it may rely on a secondary function.
 
 Check if /exitplayercar modifies admin levels or FugitiveCore—this would indicate if it secretly promotes/demotes players.
+
+**Deep Analysis of Commands in the Fugitive SA-MP Script**
+
+---
+
+### **1. /rob - Robbery System**
+#### **Purpose:**
+The `/rob` command allows players to initiate a robbery, triggering a sequence of events that involve potential police intervention and a reward system.
+
+#### **Breakdown:**
+- **Cooldown Mechanism:** The script utilizes `gPlayerLastRob[MAX_PLAYERS]` to track when a player last used `/rob` to prevent spamming.
+- **Robbery Success Handling:** If successful, the player is assigned a wanted level, notifying law enforcement roles.
+- **Cash Reward System:** `GivePlayerMoney(playerid, reward);` handles the financial incentive, possibly scaled based on location or difficulty.
+- **Escape Mechanic:** If players successfully flee the scene, they must reach a designated checkpoint to complete the mission.
+
+#### **Integration:**
+- Works closely with `SetPlayerCriminal()` to flag a player as a suspect.
+- Uses `SetPlayerCheckpoint()` to assign an escape route.
+- Broadcasts alerts to all police units via `SendClientMessage()`.
+
+---
+
+### **2. /login - Player Authentication**
+#### **Purpose:**
+Handles player authentication by verifying stored credentials and logging them into the game.
+
+#### **Breakdown:**
+- **Input Handling:** The script captures the password input using `sscanf()`.
+- **Database Verification:** Likely checks against stored player data to validate the credentials.
+- **Security Considerations:** Uses `strcmp()` to compare the input password against the stored hash, though encryption could be enhanced.
+- **Session Activation:** Upon successful login, it sets the player's admin level and loads other saved stats.
+
+#### **Integration:**
+- Works with the admin system to define privileges.
+- Ensures persistent data handling for returning players.
+- Should be coupled with encryption for added security.
+
+---
+
+### **3. /help - Guidance System**
+#### **Purpose:**
+Provides new players with instructions and a list of available commands.
+
+#### **Breakdown:**
+- Displays multiple messages via `SendClientMessage()`.
+- Likely includes categorized sections for general, admin, and role-specific commands.
+- Potential room for improvement: Implement a paginated system to avoid chat spam.
+
+#### **Integration:**
+- Connects to other commands like `/rules` and `/commands`.
+- Helps new players navigate the server functionalities effectively.
+
+---
+
+### **4. /race - Racing System**
+#### **Purpose:**
+Triggers a race event where players compete for rewards.
+
+#### **Breakdown:**
+- **Race Availability:** The script checks `racelist > 0` to determine if a race is currently open.
+- **Randomized Start Points:** Uses `random()` to select from predefined race tracks.
+- **Checkpoint System:** Players must reach various checkpoints using `SetPlayerCheckpoint()`.
+- **Winner Handling:** Determines the first player to complete all checkpoints and awards a prize.
+
+#### **Integration:**
+- Could be expanded with custom vehicles or betting systems.
+- Ensures fair competition by monitoring race progress.
+
+---
+
+### **5. /steal - Car Theft System**
+#### **Purpose:**
+Allows players to steal vehicles for monetary gain while alerting police forces.
+
+#### **Breakdown:**
+- **Random Vehicle Assignment:** Uses `random(166) + 88` to assign a target vehicle.
+- **Police Alert System:** Notifies police via `SendClientMessage()` with details about the stolen car.
+- **Drop-Off Mechanic:** Requires the player to reach a specific location to finalize the theft.
+- **Wanted Level Increase:** Increases the fugitive status of the player upon successful theft.
+
+#### **Integration:**
+- Uses the checkpoint system for drop-off locations.
+- Encourages police chases by marking stolen vehicles.
+
+---
+
+### **6. /dm - Deathmatch Mode**
+#### **Purpose:**
+Engages players in a free-for-all combat mode with randomized weapon selection.
+
+#### **Breakdown:**
+- **Participant Limit:** Ensures `dmlist > 35` to avoid overpopulation.
+- **Weapon Assignment:** Selects a random weapon via `random()`.
+- **Elimination Handling:** Determines the last survivor and distributes rewards.
+
+#### **Integration:**
+- Could be linked with leaderboards to track player stats.
+- Potential to implement team-based deathmatch modes.
+
+---
+
+### **7. /heal - Medical Assistance**
+#### **Purpose:**
+Allows players to heal themselves or others, often used in hospitals or by paramedics.
+
+#### **Breakdown:**
+- **Healing Cost:** Deducts in-game currency when a player requests healing.
+- **Health Restoration:** Uses `SetPlayerHealth(playerid, newHealth);` to restore health levels.
+- **Cooldown Timer:** Prevents spamming of the healing function.
+
+#### **Integration:**
+- Ties into the hospital system where healing services are available.
+- Could be enhanced by adding a requirement for a medic player to be present.
+
+---
+
+### **8. /arrest - Law Enforcement System**
+#### **Purpose:**
+Allows police officers to arrest fugitive players and send them to jail.
+
+#### **Breakdown:**
+- **Target Validation:** Ensures that only wanted players can be arrested.
+- **Jail System:** Uses `SetPlayerInterior(playerid, jailCellInterior);` to move a player into a jail cell.
+- **Sentence Time Calculation:** Determines the duration of imprisonment based on the wanted level.
+
+#### **Integration:**
+- Works alongside `/rob` and `/steal` by punishing crime.
+- Enhances roleplay by giving law enforcement an active role.
+
+---
+
+
