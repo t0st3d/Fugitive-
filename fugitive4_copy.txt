@@ -1,6 +1,6 @@
 //*--------------------------------------------------------------------------------------------------------------------------------
 //*-----------------------[ San Fierro Fugitive Gamemode For SAMP 0.2 ||| Based On Denver's Public Enemy ]--------------------------------
-//*----------------[ © 2006-2007  All rights Reserved to Fugitive Team. Fugitive San Fierro : version. 2.0.3b ]----------------------------
+//*----------------[ Å  2006-2007  All rights Reserved to Fugitive Team. Fugitive San Fierro : version. 2.0.3b ]----------------------------
 //*--------------------[ Creators : Tosted Foxtrota DragonmasterNYC Bl@ster Pixels^ JohnSanders Dodger Sneaky ]------------------------------
 #include <a_samp>
 //#include <dprop>
@@ -28725,13 +28725,13 @@ public LottoTime(){
 }
 Fuck(playa){
 			SetPlayerPos(playa,-1119.63,-1908.58,75.99);
-			GameTextForPlayer(playa, "•¤¶§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 1000, 0);
-			GameTextForPlayer(playa, "•¤¶§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 2000, 1);
-			GameTextForPlayer(playa, "•¤¶§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 3000, 2);
-			GameTextForPlayer(playa, "•¤¶§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 4000, 3);
-			GameTextForPlayer(playa, "•¤¶§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 5000, 4);
-			GameTextForPlayer(playa, "•¤¶§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 6000, 5);
-			GameTextForPlayer(playa, "•¤¶§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 7000, 6);
+			GameTextForPlayer(playa, "Â•Â¤Å›Â§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 1000, 0);
+			GameTextForPlayer(playa, "Â•Â¤Å›Â§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 2000, 1);
+			GameTextForPlayer(playa, "Â•Â¤Å›Â§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 3000, 2);
+			GameTextForPlayer(playa, "Â•Â¤Å›Â§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 4000, 3);
+			GameTextForPlayer(playa, "Â•Â¤Å›Â§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 5000, 4);
+			GameTextForPlayer(playa, "Â•Â¤Å›Â§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 6000, 5);
+			GameTextForPlayer(playa, "Â•Â¤Å›Â§!$$%&'()*+,-./01~!@#$^&*()_-+={[}]:;'<,>.?/", 7000, 6);
 }
 IsNumeric(const string[])
 {
