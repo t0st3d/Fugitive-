@@ -1,0 +1,535 @@
+/rcon login - login as admin
+/rcon cmdlist - display a list of all commands
+/rcon exit - exit
+/rcon kick - kick player
+/rcon ban - ban player
+/rcon gmx - restart
+/rcon changemode [map name] change map
+/rcon say - type "text" in chat from admin
+/rcon echo - type text on console side
+/rcon password - set or change password on server
+/sethealth id - set health
+/killer id - kill player
+/disarm id - take away weapon
+/giveweapon <player_id> <gun_id> give weapon to specific player
+/givemoney <player_id> <amount> give money to specific player
+/freeze id - freeze
+/unfreeze id - unfreeze
+/teleto - teleport to a person
+/telehere - teleport a person to yourself
+/setloc - set a point for teleport
+/teleloc - teleport to a point
+P.S. These commands can be entered in the game as well
+Admin commands, according to the admin level (entered in the game):
+1 lvl:
+/stats id - player statistics
+/setint x - if there are no textures outside, enter /setint 0
+/kick id - kick
+/ban id - ban
+/goto id - teleport to the player
+/a(dmin) chat - chat with admins
+
+2 lvl (+ to the commands of the previous level):
+/cnn - speak on the whole screen
+/mute id - close/open the mouth of the flooder
+/skydive - jump with a parachute
+/setteam id x - change the player's gang affiliation, for example 2 is a cop
+/gotop x - teleport to the location 4-ammunation, 5-the highest mountain
+/ps /addcop /addmed - do not use
+/freeze id - freeze the player
+/thaw id - unfreeze the player
+/ajail id x - jail the player for x seconds
+/unjail id - free the player
+/tv id - watch players on TV (on the street)
+/cam x - camera view 1 2 3 4
+
+3 lvl (+ to the commands of the previous level):
+/noooc - turn on/off the main chat
+/fourdive id id id id - give 4 players parachutes and jump over a skyscraper
+/dmweapon t - change the weapon of the DM that has started, for example tec9 or sawnoff
+/loaddm t - load DM by name
+/sp x - 1 2 3 4 points for DM
+/dmn /dms /dme /dmw - north/south/west/east edges for DM
+/savedm t - save DM (name)
+/startdm - start DM (causes a glitch)
+/stopdm - stop DM
+/gotols /gotolv /gotosf - teleport to PM SF and LV
+/unban name - unban a player by nickname, that is, when entering from other IPs, he will not automatically get banned
+/mission - start expected mission (causes a glitch)
+/cashbox /streetrace /hotwire /deathmatch x - 0 1 - off on mission
+/endround - safe restart of script
+/mark - leave a point for teleport
+/gotomark - teleport to point
+/gethere id - teleport player to yourself
+1337 lvl (+ to commands of the previous level):
+/loadpl /savepl - do not use
+/sban id - silent ban
+/sslap id - silent slap
+/sf id - silent freeze
+/ss id - take 40hp
+/sc id - find out hp
+/givehealth id x - give the player health, from 0 to infinity
+/givegun id x - give a weapon (does not work)
+/givemoney id x - money, from -infinity to +infinity
+/makeadmin id x - prohibited command, the meaning is clear, values ​​0 1 2 3 1337 1338
+/setstat id yx - edit player stat, y is a separate part of the stat that needs to be changed, to find out enter /setstat
+/gmx - restart the script (leads to a strong headache)
+/editlevel x - change to home or biz level, entered at the door also shows the house/biz number
+/house x - teleport to house by number, from 0 to 33 like
+/biz x - teleport to biz by number, from 0 to ? like
+/sbiz x - teleport to house by number, from 0 to ? something like
+/asellhouse x - sell house by number
+/mole t - say 555 from dispatcher
+/hq t - say from police dispatcher
+/logout - logout
+/logoutpl id - log out player
+/logoutall - log out everyone (the question is, why?)
+/payday - a formidable command, causes approval and addiction
+/drop /vec - non-working commands
+/pos - not yet studied
+/test - shows something
+/spawn - straight home
+/incmis - some destructive command, does something bad
+/editprod(p) - some glitchy commands
+/laps x - number of laps
+/cp x - set 1 2 3 and 4 checkpoints
+/startrace - start a race (leads to a glitch)
+/randomrace - on/off races in random order
+/setrace - hmm.. mhm? - unexplored
+/racelist - on/off list of tracks (it's not clear why)
+/racedelay x - seconds before the start of the race (glitches and also sets on DM)
+/saverace t - save the created race name
+/loadrace t - load the race name
+1338 lvl (+ to the commands of the previous level):
+The admin panel of this level itself makes the admin invisible in /admins
+/dn /up /lt /rt /fly - useless commands
+/edithousecar x - entered at the door of the house, x is the car number, you need to know (leads to the script freezing) Roter: It works fine for me
+/bizname t - change the name of the purchased biz
+/pen - blink
+/testcam - tear the camera away from you
+/prop /tmppos - reboots prop and tmppos
+/uncon - teleport to something similar to Liberty City Airport
+/gotoin - teleport to some strange garage
+/gotostad - teleport to Hotring Stadium
+/footmode - on/off. carrying the cash register on your feet (getting into a car the cash register is lost)
+/atomicbomb - this command still kills everyone
+/allgod - everyone is unkillable
+/allnotgod - everyone is killable /
+iconall - a glitchy command, something is confusing /
+noiconall - a glitchy command, something is confusing
+/healall - give everyone 100hp
+/cd xy - countdown, x - seconds, y - 1 with freezing everyone, 0 without freezing
+/stopcd - stop this nonsense
+
+To find out your admin level and the commands available at it, enter /ah
+
+/regnick
+/rcon login
+/makeadmin
+/dn - down 2 meters
+/up - up 2 meters
+/lt - north 2 meters
+/rt - south 2 meters
+/pay [playerid/PartOfName] [amount] - transfer [amount] of money [playerid/PartOfName] to a player
+/charity [amount] - donate [amount] of money
+/register or /regnick [password] - register with password [password]
+/changepass [password] - change password to [password]
+/changename [newname] - change nickname to [newname]
+/level - view your info
+/stats [playerid/PartOfName] - view player info [playerid/PartOfName]
+/number [playerid/PartOfName] - view player phone number [playerid/PartOfName]
+/buylevel - buy a level
+/rob - ???
+/arob - ???
+/carcolor [color 1 - 2] [color number] - change car color [color 1 - 2] to [color number]
+/carupgrade [carname] - order car [carname] to house
+/resetupgrades - remove all upgrades from player for $100,000
+/bigbang - blow up all cars
+/bestbuy - ...
+/bestsale - ...
+/buygun [gunname] [ammoamount] - buy weapon [gunname] with [ammoamount] ammo
+/upgrademenu - player upgrades menu (indoors)
+/login [password] - log in to server
+/o(oc) [ooc chat] - message in double brackets
+/noooc - ???
+/ad(vertise) [advert text] - advertising message
+/togooc - ???
+/me [action] - ...
+/l(ocal) [local chat] - example: ХХХ says ____
+/s(hout) [local chat] - example: ХХХ shouts ____
+/m(egaphone) [megaphone chat] - for a player who is on a team
+/10-4 - ???
+/10-25 - ???
+/r(adio) [radio chat] - say on the radio on the xxx frequency
+/duty - ???
+/mdc [playerid/PartOfName] - ???
+/su(spect) [playerid/PartOfName] [crime discription] - ???
+/free [playerid/PartOfName] - ???
+/release [playerid/PartOfName] - ???
+/radioactivitysuperpowermultiply - ???
+/lock - open/close your property /
+w(isper) [playerid/PartOfName] [whisper text] - ???
+/warn [playerid] [Reason] - issue a warning
+/lockserver - close server
+/unlockserver - open server
+/lockserverban - close server with bans
+/unlockserverban - open server with bans
+/getcuffs - ???
+/gethorn - ???
+/enterPD2 - ???
+/exitPD2 - ???
+/myjob - ???
+/undercover - become an undercover cop (???)
+/ticket [playerid/PartOfName] [amount] - ???
+/badge - ???
+/taxi - call a taxi
+/taxioff - cancel taxi call
+/driver - become a driver
+/nodriver - cancel previous
+/enterPD - ???
+/exitPD - ???
+/sscan - ???
+/alock - ???
+/alockdisable - ???
+/pguns [playerid] or /pguns all - give good weapon to player [playerid] or all players
+/myguns - give a weapon for 25 kills
+/mygunsa - give a weapon for money
+/sellup - ???
+/sellnum - ???
+/vent - ...
+/site - ...
+/reset - ???
+/afk - "away from computer"
+/back - "back"
+/busy - "busy"
+/cd [seconds:1-500] [freeze:1-0] - enable countdown
+/stopcd - disable countdown
+/sendround - ???
+/gotoni - teleport to ...
+/killp [ID] - kill player [ID]
+/atomicbomb - detonate atomic bomb in 10 sec
+/allgod - make everyone immortal
+/allnotgod - make everyone mortal
+/iconall - ???
+/noiconall - ???
+/healall - heal everyone
+/report(/m2a) [id] [report] - write a complaint to the admin about [id] player
+/am(ess) [message] - message from the admin
+/god [Playerid] - make player [Playerid] immortal
+/ungod [Playerid] - make player [Playerid] mortal
+/noicon - ???
+/icon - ???
+/iconcolors - ???
+/bank [amount] - put [amount] of money in the bank (instead of [amount] you can write all)
+/loan [amount] - ???
+/withdraw [amount] - take [amount] of money from the bank
+/balance - check the balance in the bank
+/dice - ???
+/betdm [playerid/PartOfName] [amount] - place a bet [amount] on player [playerid/PartOfName] at DM
+/betrace [playerid/PartOfName] [amount] - place a bet [amount] on player [playerid/PartOfName] at a race
+/bets - view your bet
+/(wire)transfer [playerid/PartOfName] [amount] - ???
+/buyticket - ???
+/buy [item number] - make a purchase at a supermarket
+/buyhouse - buy a house
+/rentroom - rent a room
+/rentcar - rent a car
+/hirecar [key id] - ???
+/switchkey - change key
+/givekey [playerid/PartOfName] - give key to player [playerid/PartOfName]
+/unrentcar - cancel car rental
+/unrent - cancel room rental
+/housedeposit [amount] - ???
+/housewithdraw [amount] - ???
+/asellhouse [houseid] - admin sells house [houseid]
+/sellhouse - sell house
+/houseupgrade(/hu) [item number] - upgrade house
+/forsale - show list of houses for sale
+/setrent [RentFee] - set rent
+/evictall - evict all tenants
+/evict [playerid/PartOfName] - evict tenant [playerid/PartOfName]
+/setrentable [0/1] - turn on/off house rent
+/c(all) [phonenumber] - call number [phonenumber]
+/t(ext) [phonenumber] [text chat] - ???
+/p(ickup) - answer a call
+/h(angup) - end a phone call
+/fixr - ???
+/time - check the time
+/house [housenumber] - teleport to house [housenumber]
+/biz [biznumber] - teleport to biz [biznumber]
+/sbiz [biznumber] - teleport to sbiz [sbiznumber]
+/edithousecar [vecid] - change the car at home to [vecid]
+/editlevel [level] - change the level of house/biz to [level]
+/editprod [level] - ???
+/load - see how many components are left in the car
+/buycomp - buy components
+/sellcomp - sell components
+/enter - enter home/business
+/exit - exit home/business/car
+/home - show where your home is
+/modcar - send a regular car to tuning
+/modst - send a street racer car to tuning
+/modlr - send a lowrider car to tuning
+/towcar - return the car to home without repairs, leaving the tuning
+/fixcar - return the car to home with repairs, removing the tuning
+/dmweapon [gunname] - change the weapon on DM
+/startdm - start the DM mission
+/dive - jump with a parachute
+/buybiz - buy biz
+/asellallbiz - admin sells all biz
+/asellbiz [bizid] - admin sells biz [bizid]
+/asellsbiz [sbizid] - admin sells sbiz [sbizid]
+/sellbiz - sell biz
+/bizinfo - biz info
+/bizfee [EntranceFee] - set entry price [EntranceFee]
+/pricemod [percentage of base value (default %100)] - ???
+/compprice [amount to pay per unit of components] - set component price
+/missionactive - ???
+/bizname [Name](dont use ,) - change biz name
+/bizwithdraw [amount] - ???
+/bizbank [amount] - ???
+/bizupgrade [item number] - upgrade biz
+/job - view current job
+/heal [playerid/PartOfName] - heal player [playerid/PartOfName] (just heal yourself in a certain place)
+/8ball [8ball text] - send message on behalf of 8ball
+/fuck [playerid] - fuck player [playerid]
+/hq [hq text] - send message on behalf of hq
+/bigears - ???
+/id [playerid/PON/off] - view player id by his name
+/tv (/recon) - watch TV
+/spawn(2,3) - respawn
+/fugi - ???
+/pen - become BNN1
+/fugip [playerid] - make player [playerid] BNN1
+/payday - salary
+/incmis - ???
+/test - writes something
+/patch - ???
+/testcam - does something with the camera (cool, but does not turn off)
+/prop - reset property (houses)
+/tmppos - reset TmpPos
+/uncon - teleport to some airport ???
+/eject - throw out of the car
+/paintjob - ??? removes $500
+/nos - put nitro on the car for $500
+/chkhealth - check the health and armor level
+/modify - ???
+/rc - house protection
+/chkmodel - car id
+/chkvecs - how many cars are in the mod
+/chkmodels - how many different car models are in the mod
+/paytoll - ???
+/gateopen - ???
+/gateclose - ???
+/cars1(2,3) - list of cars with their id
+/sunbathe - lie down
+/meditate - meditate
+/surrender - raise your hands
+/anims - list of animations
+/dance [style 1-3] - dance
+/strip1(2,3) - ???
+/clearanim or /ca - ???
+/world - ???
+/cworld - show world number
+/showtime - ???
+/flip - flip car on its wheels
+/turn - rotate car 180 degrees
+/decode - decode password
+/derby - ???
+/chkmon [playerid] - ???
+/elevator - ???
+/nielevator - ???
+/nigateopen - open gate to ni
+/nigateclose - close gate to ni
+/agate - close gate to red zone
+/agateopen - open gate to red zone
+/chkprot - check anti-theft protection
+/lotto [ticketnumber] (make it 1-250) - buy lottery ticket for 1 exp.
+/lottopool - ???
+/forcelotto - speed up the lottery
+/forcerace - start the race in 5 seconds
+/a(dmin) [admin chat] - chat for admins
+/logout - log out
+/logoutpl [playerid/PartOfName] - log out player [playerid/PartOfName]
+/logoutall - log out everyone
+/cnn [cnn textformat ~n~=Newline ~r~=Red ~g~=Green ~b~=Blue ~w~=White ~y~=Yellow] - message in the middle of the screen
+/cnnn <type> [cnnc textformat ~n~=Newline ~r~=Red ~g~=Green ~b~=Blue ~w~=White ~y~=Yellow] - message in the middle of the screen
+/stun - ???
+/cuff [Player id] - handcuff passenger to car
+/getall - teleport everyone to you
+/uncuff <Player id> - uncuff
+/ajail [playerid/PartOfName] [seconds] - jail player [playerid/PartOfName]
+/arrest [Criminal's ID] - ???
+/unjail [playerid/PartOfName] - release player [playerid/PartOfName] from jail
+/tod [timeofday] (0-23) - change time
+/astat [playerid] [statcode] [amount] - change player [playerid]'s [statcode] to [amount]
+/arank - ???
+/copset [playerid] [Set] [Amount] - ???
+/givejob [playerid] [Job/Rank] [Position] - ???
+/setchannel [Frequency] - set radio frequency to [Frequency]
+/setint [interiorid] - ???
+/setintp [playerid] - ???
+/skydive - jump with a parachute
+/tendive [1][2][3][5][6][7][8][9][10] - parachute jump for ten players
+/makeadmin [playerid] [Level] - make player [playerid] an admin of [Level] level
+/makepadmin [playerid/PartOfName] [level] - make player [playerid] an admin of [Level] level
+/accedit - enable nickname/password editing
+/acceditoff - disable nickname/password editing
+/adminarea [playerid/PartOfName] [on 1 off 0)] - ???
+/asetteam [playerid] [team id] - transfer player [playerid] to team [team id]
+/jointeam [team 1(medic) - 2(cop)] - switch to team [team 1(medic) - 2(cop)]
+/sex [playerid/PartOfName] - ?????
+/buyupgrade [number] - buy [number] upgrade points, $500,000 each
+/flyto-ls - ???
+/flyto-sf - ???
+/flyto-lv - ???
+/gotols - teleport to Los Santos
+/gotolv - teleport to Las Venturas
+/gotosf - teleport to San Fierro
+/entercar [carid] - teleport to car [carid]
+/entercarp(assenger) [carid] - teleport to passenger seat in car [carid]
+/joincar [carid] - ???
+/dvec [carid] 276 and up - car respawns after 10 seconds (?)
+/exitplayercar - ???
+/gotocar [carid] - ???
+/mark - put a mark
+/gotomark - teleport to a mark
+/gotoin - teleport to some hangar
+/gotostad - teleport to a stadium
+/gotojet - teleport to an airplane
+/goto [playerid/PartOfName] - teleport to player [playerid/PartOfName]
+/meltdown - ???
+/gotop [posid] - teleport to point [posid]
+/gethere [playerid/PartOfName] - teleport player [playerid/PartOfName] to yourself
+/getcar [carid] - ???
+/givegun [playerid/PartOfName] [weaponid(eg. 46 = Parachute)] [ammo] - gives player [playerid/PartOfName] a weapon [weaponid] with [ammo] ammo
+/givehealth [playerid/PartOfName] [health] - gives [health] lives to player [playerid/PartOfName]
+/givearmor [playerid/PartOfName] [amount] - gives [amount] armor to player [playerid/PartOfName]
+/checkup - ???
+/givemoney [playerid/PartOfName] [money] - gives player [playerid/PartOfName] [money] money
+/fkick [playerid] - ???
+/fban [playerid] - ???
+/tslap [playerid/PartOfName] - triple hit of player [playerid/PartOfName]
+/slap [playerid/PartOfName] - hit of player [playerid/PartOfName]
+/slapcar [playerid/PartOfName] - hit player's car [playerid/PartOfName]
+/orbit [playerid/PartOfName] - send player [playerid/PartOfName] to orbit
+/unorbit [plyerid/part of name] - return player [playerid/PartOfName] from orbit
+/mute [playerid/PartOfName] - mute/unmute player [playerid/PartOfName]
+/ss [playerid/PartOfName] - writes how many lives and takes away 40
+/sc [playerid/PartOfName] - writes how many lives
+/kick [playerid] [reason] - kick player [playerid] for a reason [reason]
+/freeze [playerid] - freeze player [playerid]
+/sf [playerid] - stealth freeze
+/thaw [playerid] - unfreeze for stealth freeze
+/ban [playerid] [reason] - ban player [playerid] for [reason]
+/fuckban [playerid] - ???
+/acheck [playerid] - ???
+/wlevel [playerid] - ???
+/sban [playerid] - silent ban
+/amod [carmodid] 1034~1041 - ???
+/endround - ???
+/eendround - ???
+/endroundhelp - help with ???
+/gmx - restart mod
+/mission - next mission
+/missionstop - stop mission
+/sp [1(resets)/2/3/4] - ???
+/cam [1/2/3/4] - ???
+/dmn - ???
+/dms - ???
+/dme - ???
+/dmw - ???
+/savedm [dmname] - ???
+/loaddm [dmname] - ???
+/stopdm - ???
+/dmhelp - help with DM
+/cp - set checkpoints for the race
+/svec - ???
+/startrace - enable the race mission
+/racelist - ???
+/footmode - ???
+/racedelay [seconds] - wait until the race starts
+/saverace [racename] - save the race from the set checkpoints
+/loadrace [racename](disables racelist) - load the race
+/loadraces - ???
+/unban [playername] - unban player [playername]
+/loadpl [playername] - ???
+/savepl [playername] - ???
+/drop [weaponid] - get a weapon
+/pos [comment] - ???
+/addcop [copname] - ???
+/| - ???
+/addmed [medname] - ???
+/angel [vehicleid] - a car near you
+/eliza [vehicleid] - yourself in a car
+/vec [vehicleid] - ???
+/ps [soundid] - play sound
+/admins - show admins
+/briefcase (/bc) [0-1] This mission on 1 off 0 - on/off case mission
+/racenight - ???
+/streetrace (/sr) [0-1] This mission on 1 off 0 - on/off race mission
+/hotwire (/hw) [0-1] This mission on 1 off 0 - on/off car mission
+/deathmatch (/dm) [0-1] This mission on 1 off 0 - on/off DM mission
+/alloff - turn off all missions
+/allon - enable all missions
+/help - help
+/channels - show channel list
+/version - show mod version
+/lawhelp - some help
+/cophelp - cop help
+/codes - cop codes
+/cellphonehelp - help for phone
+/househelp - help around the house
+/renthelp - help with rent
+/businesshelp - help with business
+/adminhelp or /ah - help for admin
+/adminlevels or /al - admin levels
+/supervisorhelp or /suh - commands for admin level 107
+/movehelp or /moh - ...
+/scripthelp or /sh - ...
+/missionhelp or /mh - ...
+/acon or /ac - admin commands
+/contract [playerid/PartOfName] [amount] - assign a contract
+/votekick [playerid/PartOfName] - vote by kick
+/vote [playerid] - vote for kick
+/unlock - ???
+/p(layer)stats [playerid/PartOfName] - ???
+/k(ill)stats [playerid/PartOfName] - ???
+/d(eath)stats [playerid/PartOfName] - ???
+/s(ave)sp [playerid/PartOfName] - ???
+/savestats or /ssave - ???
+/saveallstats or /sas - ???
+/spec [playerid] - spectate player
+/specvec [vehicleid] - spectate car
+/specoff - disable spectating
+/explode [playerid] - blow up player
+/napalm [playerid] - burn player
+/destroycar [playerid] - destroy car
+/skydiveall - everyone jumps with a parachute
+/screw [playerid] - ???
+/unscrew [playerid] - ???
+/map [number] - ???
+/giveperm [playerid/PartOfName] - permission to change nickname
+/rcon login - enters administrator mode. Required to execute the following commands.
+/rcon exec - run config.
+/rcon cmdlist - display a list of all commands.
+/rcon varlist - display a list of all variables.
+/rcon exit - exit.
+/rcon kick - kick player by id. Kicks the player.
+/rcon ban - ban player by id. Kicks the player permanently.
+/rcon gmx - restarts the scenario.
+/rcon changemode - change the current map.
+/rcon say - print "text" in the chat from the admin.
+/rcon echo - print text on the console side.
+/rcon reloadbans - reloads bans.
+/rcon password - set or change the password for the server.
+/rcon unbanip - unban a player.
+/rcon reloadlog - clear the server log (server_log.txt.)
+/rcon players - Shows the players on the server (with their names, IP & ping).
+/rcon banip [IP] - Bans a player by IP address (example: /rcon banip 127.0.0.1).
+/rcon unbanip [IP] - Unbans a player by IP address (example: /rcon unbanip 127.0.0.1).
+/rcon gravity - Change gravity (example: /rcon gravity 0.008).
+/rcon weather [ID] - Change weather (example: /rcon weather 1).
+/rcon loadfs - Load a specific filterscript (example: /rcon loadfs adminfs).
+/rcon unloadfs - Unload a specific filterscript from the server (example: /rcon unloadfs adminfs).
+/rcon reloadfs - Reload a specific filterscript (example: /rcon reloadfs adminfs).
